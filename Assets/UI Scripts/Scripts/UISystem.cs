@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class UISystem : MonoBehaviour
 {
@@ -17,6 +19,11 @@ public class UISystem : MonoBehaviour
 	public UIScreen PreviousScreen { get {return previousScreen;}}
 	public UIScreen CurrentScreen { get {return currentScreen;}}
 
+	[Header("Fader Properties")]
+	public Image fader;
+	public float fadeInDuration =1f;
+	public float fadeOutDuration = 1f;
+
 	#endregion
 
 	#region Main Methods
@@ -24,6 +31,13 @@ public class UISystem : MonoBehaviour
     void Start()
     {
          screens = GetComponentsInChildren<UIScreen>(true);
+
+        if(fader)
+         {
+       		fader.gameObject.SetActive(true);
+       	 }
+
+       	 FadeIn();
     }
 
     #endregion
@@ -48,6 +62,19 @@ public class UISystem : MonoBehaviour
     		}
     	}
 
+    }
+
+    public void FadeIn(){
+
+    	if(fader){
+    		fader.CrossFadeAlpha(0f, fadeInDuration, false);
+    	}
+    }
+
+    public void FadeOut(){
+    	if(fader){
+    		fader.CrossFadeAlpha(1f, fadeOutDuration, false);
+    	}
     }
 
     public void GoToPreviousScreen()

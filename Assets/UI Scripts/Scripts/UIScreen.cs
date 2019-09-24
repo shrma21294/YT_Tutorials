@@ -13,6 +13,7 @@ public class UIScreen : MonoBehaviour
 	[Header("Main Properties")]
 	public Selectable m_StartSelectables;
 
+
 	[Header("Screen Events")]
 	public UnityEvent onScreenStart = new UnityEvent();
 	public UnityEvent onScreenClose = new UnityEvent();
@@ -33,6 +34,7 @@ public class UIScreen : MonoBehaviour
        {
        		EventSystem.current.SetSelectedGameObject(m_StartSelectables.gameObject);
        }
+
     }
 
     #endregion
