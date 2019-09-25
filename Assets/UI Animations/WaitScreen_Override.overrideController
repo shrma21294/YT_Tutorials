@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RegisterScreen_Override
+  m_Name: WaitScreen_Override
   m_Controller: {fileID: 9100000, guid: fb2a18c02a53746d9b7d5169c5fb79f6, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 4860fb73e5a954964a3b594e126c46e8, type: 2}

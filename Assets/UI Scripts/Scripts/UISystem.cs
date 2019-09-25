@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 public class UISystem : MonoBehaviour
 {
     #region Variables
+	[Header("Main Properties")]
+	public UIScreen StartScreen;
+
     [Header("System Events")]
     public UnityEvent onSwitchedScreens = new UnityEvent();
 
@@ -32,6 +35,13 @@ public class UISystem : MonoBehaviour
     {
          screens = GetComponentsInChildren<UIScreen>(true);
 
+         InitializeScreens();
+
+         if(StartScreen)
+         {
+         	SwitchScreen(StartScreen);
+         }
+
         if(fader)
          {
        		fader.gameObject.SetActive(true);
@@ -49,13 +59,13 @@ public class UISystem : MonoBehaviour
     	if(aScreen){
 
     		if(currentScreen){
-    			//currentScreen.Close();
+    			currentScreen.CloseScreen();
     			previousScreen = currentScreen;
     		}
 
     		currentScreen = aScreen;
     		currentScreen.gameObject.SetActive(true);
-    		//currentScreen.StartScreen();
+    		currentScreen.StartScreen();
 
     		if(onSwitchedScreens != null){
     			onSwitchedScreens.Invoke();
@@ -95,6 +105,11 @@ public class UISystem : MonoBehaviour
     	yield return null;
     }
 
+    void InitializeScreens(){
+    	foreach(var screen in screens){
+    		screen.gameObject.SetActive(true);
+    	}
+    }
 
     #endregion
 }
